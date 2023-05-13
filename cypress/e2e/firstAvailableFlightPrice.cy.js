@@ -1,4 +1,5 @@
 import homePage from "../pages/homePage";
+import flights from "../pages/flights";
 
 describe('Getting first available flight price', () => {
 
@@ -20,6 +21,12 @@ describe('Getting first available flight price', () => {
         homePage.clickFindFlights()
 
         cy.url().should('equal','https://book.airmalta.com/flights/oneway')
+
+        flights.clickFlexibleDates()
+
+        cy.url.should('equal','https://book.airmalta.com/calendar/oneway')
+
+        flights.elements.outBoundFlightHeader.should('exist')
 
     })
   })
