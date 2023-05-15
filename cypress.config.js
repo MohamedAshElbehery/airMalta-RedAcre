@@ -5,10 +5,16 @@ module.exports = defineConfig({
 
     defaultCommandTimeout: 10000,
 
-    pageLoadTimeout: 10000,
+    pageLoadTimeout: 20000,
 
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on("before:browser:launch", (browser, launchOptions) => {
+        console.log(launchOptions.args);
+        if (browser.name === "chrome") {
+          launchOptions.args.push("--incognito");
+        }
+        return launchOptions;
+      });
     },
     
   },

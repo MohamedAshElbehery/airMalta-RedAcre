@@ -23,6 +23,7 @@ class homePage{
         findFlightsButton : ()=> cy.xpath('//button[contains(text(),"Find flights")]')
     }
 
+    //Getting today's date and cleaning it to be in the format accepted by the web element
     getTodayDate(){
 
         let todayDate = new Date().toString().slice(0,15)
